@@ -31,7 +31,7 @@
     .page-nav a, .page-nav button { color:#f3e3c4; text-decoration:none; font-size:.86rem; padding:8px 12px; border-radius:999px; border:1px solid transparent; }
     .page-nav a:hover, .page-nav button:hover { background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.08); }
     .image-card, .hero-photo { position: relative; overflow: hidden; border-radius: 30px; border: 1px solid rgba(255,255,255,.12); box-shadow: 0 24px 70px rgba(0,0,0,.24); }
-    .image-card img, .hero-photo img { width: 100%; height: 100%; object-fit: cover; display:block; }
+    .image-card img, .hero-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
     .image-card::after, .hero-photo::after { content:''; position:absolute; inset:0; background: linear-gradient(180deg, rgba(15,12,10,0.05), rgba(15,12,10,0.18)); }
     .hero-photo { min-height: 420px; }
     .mood-grid { display:grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
@@ -92,8 +92,7 @@
     .bar-fill { height: 100%; width: 0; border-radius: 999px; background: linear-gradient(90deg, #8f6a42, #d6b37a, #f3e3c4); }
     .stat-ring { position: relative; width: 130px; height: 130px; border-radius: 50%; display: grid; place-items: center; background: conic-gradient(#d6b37a 0 72%, rgba(255,255,255,.09) 72% 100%); }
     .stat-ring::after { content: ''; width: 88px; height: 88px; border-radius: 50%; background: #120e0c; box-shadow: inset 0 0 0 1px rgba(255,255,255,.06); }
-    .timeline-line { position: absolute; left: 24px; top: 14px; bottom: 14px; width: 2px; background: linear-gradient(180deg, rgba(214,179,122,.9), rgba(214,179,122,.15)); }
-    .timeline-dot { width: 14px; height: 14px; border-radius: 50%; background: #d6b37a; box-shadow: 0 0 0 8px rgba(214,179,122,.08), 0 0 20px rgba(214,179,122,.55); }
+    .timeline-dot { width: 14px; height: 14px; flex-shrink: 0; border-radius: 50%; background: #d6b37a; box-shadow: 0 0 0 8px rgba(214,179,122,.08), 0 0 20px rgba(214,179,122,.55); }
     .hero-word { background: linear-gradient(135deg, #f3e3c4, #d6b37a 55%, #8f6a42); -webkit-background-clip: text; background-clip: text; color: transparent; }
     .spot { position: fixed; inset: 0; pointer-events: none; z-index: 99; }
     .deco-shape { position: absolute; border-radius: 999px; pointer-events: none; filter: blur(2px); opacity: .22; }
@@ -135,7 +134,7 @@
       <div class="reveal section-label mb-5">Premium product concept</div>
       <h1 class="reveal mx-auto mb-5 max-w-4xl font-display text-[clamp(3rem,7vw,5.7rem)] font-black leading-[0.95] tracking-tight"><span class="hero-word">Vow</span><br>the luxury operating system for modern weddings</h1>
       <p class="reveal mx-auto max-w-3xl text-[clamp(1rem,1.7vw,1.35rem)] font-light leading-relaxed text-text-secondary">A US-based planning platform where couples and planners can discover venues, curate inspiration, manage budgets, coordinate guests, and run the entire celebration from one refined workspace.</p>
-      <div class="reveal mt-8 flex items-center justify-center gap-4">
+      <div class="reveal mt-8 flex flex-wrap items-center justify-center gap-3">
         <span class="mini-pill">Discovery</span>
         <span class="mini-pill">Planning</span>
         <span class="mini-pill">Collaboration</span>
@@ -390,12 +389,28 @@
       <div class="section-label reveal mb-4">Build plan</div>
       <h2 class="reveal mb-8 font-display text-[clamp(2rem,4vw,3.2rem)] font-bold">A practical roadmap to launch</h2>
       <div class="grid grid-cols-2 gap-8 items-start">
-        <div class="premium-card reveal p-8 relative">
-          <div class="timeline-line"></div>
-          <div class="space-y-7">
-            <div class="flex gap-4 items-start"><div class="timeline-dot mt-1"></div><div><div class="text-sm uppercase tracking-[0.18em] text-text-muted">Phase 1</div><div class="font-semibold text-accent-1">MVP marketplace + planning core</div><div class="text-sm leading-relaxed text-text-secondary">Auth, onboarding, vendor discovery, shortlist, budget, checklist, and wedding dashboard.</div></div></div>
-            <div class="flex gap-4 items-start"><div class="timeline-dot mt-1"></div><div><div class="text-sm uppercase tracking-[0.18em] text-text-muted">Phase 2</div><div class="font-semibold text-accent-1">Guest tools + website builder</div><div class="text-sm leading-relaxed text-text-secondary">RSVP flows, guest list, wedding website templates, and seating chart logic.</div></div></div>
-            <div class="flex gap-4 items-start"><div class="timeline-dot mt-1"></div><div><div class="text-sm uppercase tracking-[0.18em] text-text-muted">Phase 3</div><div class="font-semibold text-accent-1">Planner mode + AI concierge</div><div class="text-sm leading-relaxed text-text-secondary">Multi-client workspaces, vendor messaging, personalized recommendations, and smart task assistance.</div></div></div>
+        <div class="premium-card reveal p-8">
+          <div style="position:relative;padding-left:28px;border-left:2px solid rgba(214,179,122,.5)">
+            <div class="space-y-7">
+              <div style="position:relative;">
+                <div class="timeline-dot" style="position:absolute;left:-35px;top:2px;"></div>
+                <div class="text-sm uppercase tracking-[0.18em] text-text-muted">Phase 1</div>
+                <div class="font-semibold text-accent-1">MVP marketplace + planning core</div>
+                <div class="text-sm leading-relaxed text-text-secondary">Auth, onboarding, vendor discovery, shortlist, budget, checklist, and wedding dashboard.</div>
+              </div>
+              <div style="position:relative;">
+                <div class="timeline-dot" style="position:absolute;left:-35px;top:2px;"></div>
+                <div class="text-sm uppercase tracking-[0.18em] text-text-muted">Phase 2</div>
+                <div class="font-semibold text-accent-1">Guest tools + website builder</div>
+                <div class="text-sm leading-relaxed text-text-secondary">RSVP flows, guest list, wedding website templates, and seating chart logic.</div>
+              </div>
+              <div style="position:relative;">
+                <div class="timeline-dot" style="position:absolute;left:-35px;top:2px;"></div>
+                <div class="text-sm uppercase tracking-[0.18em] text-text-muted">Phase 3</div>
+                <div class="font-semibold text-accent-1">Planner mode + AI concierge</div>
+                <div class="text-sm leading-relaxed text-text-secondary">Multi-client workspaces, vendor messaging, personalized recommendations, and smart task assistance.</div>
+              </div>
+            </div>
           </div>
         </div>
         <div class="grid grid-cols-1 gap-5">
@@ -469,5 +484,53 @@
     spotlight.style.background = `radial-gradient(560px circle at ${e.clientX}px ${e.clientY}px, rgba(214,179,122,0.08), transparent 40%)`;
   });
 })();
-</script></body>
+</script>
+<style>
+/* =====================================================
+   MOBILE OVERRIDES — placed last in the document so
+   these rules take effect after Tailwind's injected CSS
+   ===================================================== */
+
+/* Prevent text from wrapping inside pill badges */
+.mini-pill { white-space: nowrap; }
+
+@media (max-width: 900px) {
+  /* Collapse all standard Tailwind column grids to single column */
+  .grid-cols-2,
+  .grid-cols-3,
+  .grid-cols-5 {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Collapse arbitrary-value grids (grid-cols-[…]) */
+  [class*="grid-cols-["] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* 4-column icon rows → 2 × 2 */
+  .grid-cols-4 {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  /* User journey: readable stacked steps */
+  .grid-cols-5 {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  /* Make every inner nested grid collapse too */
+  .premium-card .grid,
+  .mock-frame .grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 560px) {
+  /* On very small phones, 2×2 icon grid → full single column */
+  .grid-cols-4 {
+    grid-template-columns: 1fr !important;
+  }
+}
+</style>
+</body>
 </html>
