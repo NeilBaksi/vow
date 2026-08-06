@@ -3,534 +3,714 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vow — Premium Wedding Planning Platform</title>
+  <title>Vow — A Premium Wedding Planning Platform for Australia</title>
+  <meta name="description" content="Vow is a concept for a premium Australian wedding platform where couples and planners discover venues, curate inspiration, manage budgets, coordinate guests, and run the whole day from one calm workspace.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%92%8D%3C/text%3E%3C/svg%3E">
+
+  <!-- Open Graph / social -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Vow — A Premium Wedding Planning Platform for Australia">
+  <meta property="og:description" content="One calm workspace for discovery, inspiration, budgets, guests, and day-of coordination. A premium wedding platform concept for Australian couples and planners.">
+  <meta property="og:image" content="./images/hero-ballroom.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Vow — A Premium Wedding Planning Platform for Australia">
+  <meta name="twitter:description" content="One calm workspace for discovery, inspiration, budgets, guests, and day-of coordination.">
+  <meta name="twitter:image" content="./images/hero-ballroom.jpg">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-  <style type="text/tailwindcss">
-    @theme {
-      --color-bg: #0f0c0a;
-      --color-bg-deep: #070504;
-      --color-surface: #1a1512;
-      --color-text: #f5efe8;
-      --color-text-secondary: #dfd2c4;
-      --color-text-muted: #b39e8a;
-      --color-accent-1: #d6b37a;
-      --color-accent-2: #f3e3c4;
-      --color-accent-3: #8f6a42;
-      --color-glass-bg: rgba(255,255,255,0.06);
-      --color-glass-border: rgba(255,255,255,0.10);
-      --color-vignette: rgba(0,0,0,0.45);
-      --font-display: 'Playfair Display', serif;
-      --font-body: 'Inter', sans-serif;
-    }
-  
-    .page-progress { position: fixed; top: 0; left: 0; height: 3px; width: 0%; background: linear-gradient(90deg, #8f6a42, #d6b37a, #f3e3c4); z-index: 120; box-shadow: 0 0 18px rgba(214,179,122,.4); }
-    .page-nav { position: fixed; top: 18px; right: 18px; z-index: 110; display:flex; gap:10px; align-items:center; background: rgba(15,12,10,.62); border:1px solid rgba(255,255,255,.10); backdrop-filter: blur(12px); padding:10px 14px; border-radius:999px; }
-    .page-nav a, .page-nav button { color:#f3e3c4; text-decoration:none; font-size:.86rem; padding:8px 12px; border-radius:999px; border:1px solid transparent; }
-    .page-nav a:hover, .page-nav button:hover { background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.08); }
-    .image-card, .hero-photo { position: relative; overflow: hidden; border-radius: 30px; border: 1px solid rgba(255,255,255,.12); box-shadow: 0 24px 70px rgba(0,0,0,.24); }
-    .image-card img, .hero-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
-    .image-card::after, .hero-photo::after { content:''; position:absolute; inset:0; background: linear-gradient(180deg, rgba(15,12,10,0.05), rgba(15,12,10,0.18)); }
-    .hero-photo { min-height: 420px; }
-    .mood-grid { display:grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-    .mood-grid .image-card { height: 170px; }
-    .mood-grid .image-card.tall { height: 220px; }
-    .venue-feature { display:grid; grid-template-columns: 1.05fr .95fr; gap: 28px; align-items: stretch; }
-    .venue-panel { padding: 28px; }
-    @media (max-width: 900px) {
-      .grid.grid-cols-3, .grid.grid-cols-4, .grid.grid-cols-5, .grid.grid-cols-2, .grid.grid-cols-[1.15fr_.85fr], .grid.grid-cols-[1.1fr_.9fr], .grid.grid-cols-[.9fr_1.1fr] { grid-template-columns: 1fr !important; }
-      .venue-feature { grid-template-columns: 1fr; }
-      .mood-grid { grid-template-columns: repeat(2, 1fr); }
-      .hero-photo { min-height: 280px; }
-      .page-nav { left: 12px; right: 12px; top: 12px; justify-content: space-between; }
-      .page-nav a:not([href="app.html"]) { display:none; }
-      .slide { min-height: auto; padding-block: 72px 48px; }
-    }
-    @media (max-width: 480px) {
-      .mood-grid { grid-template-columns: 1fr !important; }
-      .mood-grid .image-card { height: 150px !important; }
-      .mood-grid .image-card.tall { height: 180px !important; }
-    }
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Mona+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  </style>
   <style>
-    :root { --color-bg: #0f0c0a; --color-text: #f5efe8; --glow-color-rgb: 214,179,122; --color-glass-bg: rgba(255,255,255,0.06); --color-glass-border: rgba(255,255,255,0.10); }
-    *, *::before, *::after { box-sizing: border-box; }
-    html, body { background: var(--color-bg); margin: 0; }
-    body { font-family: Inter, sans-serif; color: var(--color-text); overflow-x: hidden; min-height: 100vh; width: 100%; }
-    .deck { width: 100%; min-height: 100vh; position: relative; display: block; }
-    .slide { position: relative; min-height: 100vh; background: var(--color-bg); display: flex; flex-direction: column; align-items: center; justify-content: center; opacity: 1; transform: none; transition: none; pointer-events: all; overflow: hidden; border-bottom: 1px solid rgba(255,255,255,.06); }
-    .slide.active { opacity: 1; transform: none; pointer-events: all; }
-    .slide > .content { position: relative; z-index: 2; width: 100%; max-width: 1180px; padding: clamp(1.5rem, 4vw, 4rem); }
-    .nav-controls { display: none; }
-    .nav-btn { width: 40px; height: 40px; border: none; background: rgba(255,255,255,0.05); color: #d6b37a; border-radius: 50%; font-size: 1.2rem; cursor: pointer; }
-    .slide-dots { display: flex; gap: 8px; }
-    .slide-dots .dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.18); cursor: pointer; transition: .3s; }
-    .slide-dots .dot.active { background: #d6b37a; transform: scale(1.3); }
-    .slide-counter { font-size: .85rem; color: #b39e8a; min-width: 44px; text-align: center; }
-    .reveal { opacity: 0; transform: translateY(20px); }
-    .gradient-mesh { position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
-    .blob { position: absolute; border-radius: 50%; filter: blur(90px); animation: float-slow 13s ease-in-out infinite; }
-    .blob:nth-child(2) { animation: float-drift 18s ease-in-out infinite; }
-    .blob:nth-child(3) { animation: float-slow 22s ease-in-out infinite reverse; }
-    @keyframes float-slow { 0% { transform: translate(0,0) scale(1);} 25% { transform: translate(60px,-45px) scale(1.08);} 50% { transform: translate(-35px,40px) scale(.92);} 100% { transform: translate(0,0) scale(1);} }
-    @keyframes float-drift { 0% { transform: translate(0,0) scale(1);} 33% { transform: translate(-50px,-60px) scale(1.12);} 66% { transform: translate(45px,25px) scale(.9);} 100% { transform: translate(0,0) scale(1);} }
-    @keyframes float { 0%,100% { transform: translateY(0);} 50% { transform: translateY(-14px);} }
-    @keyframes shimmer { 0%,100% { opacity:.55; } 50% { opacity:1; } }
-    .slide::before { content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"); background-repeat: repeat; background-size: 256px 256px; opacity: .03; mix-blend-mode: overlay; }
-    .slide::after { content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: radial-gradient(ellipse at center, transparent 46%, rgba(0,0,0,.50) 100%); }
-    .section-label { letter-spacing: .22em; text-transform: uppercase; font-size: .78rem; color: #b39e8a; }
-    .premium-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.10); backdrop-filter: blur(12px); border-radius: 28px; box-shadow: 0 18px 60px rgba(0,0,0,.18); }
-    .gold-line { height: 1px; background: linear-gradient(90deg, transparent, rgba(214,179,122,.8), transparent); }
-    .mock-frame { background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03)); border: 1px solid rgba(255,255,255,.12); border-radius: 30px; box-shadow: inset 0 1px 0 rgba(255,255,255,.07), 0 24px 70px rgba(0,0,0,.24); }
-    .phone { width: 240px; height: 480px; border-radius: 34px; padding: 12px; background: linear-gradient(180deg, #211915, #0d0907); border: 1px solid rgba(255,255,255,.12); box-shadow: 0 24px 80px rgba(0,0,0,.35); }
-    .phone-screen { height: 100%; border-radius: 24px; background: linear-gradient(180deg, #f7f0e8, #efe5d8); overflow: hidden; position: relative; }
-    .mini-pill { border-radius: 999px; padding: 8px 14px; background: rgba(214,179,122,.12); border: 1px solid rgba(214,179,122,.28); color: #f3e3c4; font-size: .82rem; }
-    .bar-track { height: 14px; border-radius: 999px; background: rgba(255,255,255,.08); overflow: hidden; }
-    .bar-fill { height: 100%; width: 0; border-radius: 999px; background: linear-gradient(90deg, #8f6a42, #d6b37a, #f3e3c4); }
-    .stat-ring { position: relative; width: 130px; height: 130px; border-radius: 50%; display: grid; place-items: center; background: conic-gradient(#d6b37a 0 72%, rgba(255,255,255,.09) 72% 100%); }
-    .stat-ring::after { content: ''; width: 88px; height: 88px; border-radius: 50%; background: #120e0c; box-shadow: inset 0 0 0 1px rgba(255,255,255,.06); }
-    .timeline-dot { width: 14px; height: 14px; flex-shrink: 0; border-radius: 50%; background: #d6b37a; box-shadow: 0 0 0 8px rgba(214,179,122,.08), 0 0 20px rgba(214,179,122,.55); }
-    .hero-word { background: linear-gradient(135deg, #f3e3c4, #d6b37a 55%, #8f6a42); -webkit-background-clip: text; background-clip: text; color: transparent; }
-    .spot { position: fixed; inset: 0; pointer-events: none; z-index: 99; }
-    .deco-shape { position: absolute; border-radius: 999px; pointer-events: none; filter: blur(2px); opacity: .22; }
-    .kpi { font-variant-numeric: tabular-nums; }
-    .source { font-size: .76rem; color: #b39e8a; line-height: 1.4; }
-    @media (max-width: 600px) {
-      .slide > .content { padding-inline: 1.25rem; }
-      .mini-pill { font-size: .72rem; padding: 5px 9px; }
-      .premium-card { border-radius: 18px; }
-      .page-nav { padding: 8px 10px; gap: 6px; }
-      .page-nav a, .page-nav button { padding: 7px 10px; font-size: .8rem; }
-    }
-    @media (prefers-reduced-motion: reduce) { *,*::before,*::after { animation-duration: .01ms !important; transition-duration: .2s !important; } }
+  /* ============================================================
+     DESIGN TOKENS — mirrors the live Vow app (src/index.css)
+     ============================================================ */
+  :root {
+    /* Surfaces */
+    --color-bg:            #fbf7f2;
+    --color-bg-deep:       #f4ebe0;
+    --color-surface:       #ffffff;
+    --color-surface-2:     #faf5ee;
+    --color-surface-offset:#f4ebe0;
+    /* Text */
+    --color-text:          #3d2e28;
+    --color-text-muted:    #8c7a70;
+    --color-text-faint:    #b3a499;
+    /* Brand / accent */
+    --color-primary:       #b39680;
+    --color-primary-hover: #917562;
+    --color-primary-highlight:#f1e7dc;
+    --color-rose:          #c98b8b;
+    --color-rose-soft:     #f7e8e8;
+    --color-rose-deep:     #8a4e4e;
+    --color-sage:          #8a9a7b;
+    --color-sage-soft:     #ecefe5;
+    /* Lines */
+    --color-border:        rgba(61,46,40,0.10);
+    --color-border-soft:   rgba(61,46,40,0.05);
+    /* Radius */
+    --radius-sm: .375rem;
+    --radius-md: .625rem;
+    --radius-lg: .95rem;
+    --radius-xl: 1.375rem;
+    --radius-full: 999px;
+    /* Shadows (brown-tinted, soft) */
+    --shadow-sm: 0 1px 2px rgba(61,46,40,.04);
+    --shadow-md: 0 8px 24px rgba(61,46,40,.06);
+    --shadow-lg: 0 16px 40px rgba(61,46,40,.08);
+    /* Type */
+    --font-display: "Fraunces", "Cormorant Garamond", Georgia, serif;
+    --font-body:    "Mona Sans", "Inter", system-ui, -apple-system, sans-serif;
+  }
+
+  /* ============================================================
+     BASE
+     ============================================================ */
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  html, body { margin: 0; background: var(--color-bg); }
+  body {
+    font-family: var(--font-body);
+    color: var(--color-text);
+    line-height: 1.6;
+    overflow-x: hidden;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  img { max-width: 100%; display: block; }
+  h1, h2, h3 { font-family: var(--font-display); font-weight: 500; margin: 0; line-height: 1.12; }
+  p { margin: 0; }
+  ul { margin: 0; padding: 0; list-style: none; }
+  a { color: inherit; }
+
+  /* ============================================================
+     LAYOUT PRIMITIVES
+     ============================================================ */
+  .deck { width: 100%; }
+  .slide {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding-block: clamp(4rem, 9vh, 7rem);
+    background: var(--color-bg);
+    border-bottom: 1px solid var(--color-border-soft);
+    overflow: hidden;
+  }
+  .slide:nth-child(even) {
+    background: linear-gradient(180deg, var(--color-bg) 0%, var(--color-bg-deep) 100%);
+  }
+  .content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 1180px;
+    padding-inline: clamp(1.25rem, 4vw, 4rem);
+  }
+  .text-center { text-align: center; }
+
+  /* Grain + vignette on every slide */
+  .slide::before {
+    content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    background-repeat: repeat; background-size: 240px 240px; opacity: .35; mix-blend-mode: multiply;
+  }
+  .slide::after {
+    content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+    background: radial-gradient(ellipse at center, rgba(255,255,255,0) 55%, rgba(61,46,40,.05) 100%);
+  }
+
+  /* Grids */
+  .grid { display: grid; gap: var(--gap, 1.5rem); }
+  .cols-2 { grid-template-columns: repeat(2, 1fr); }
+  .cols-3 { grid-template-columns: repeat(3, 1fr); }
+  .cols-4 { grid-template-columns: repeat(4, 1fr); }
+  .cols-5 { grid-template-columns: repeat(5, 1fr); }
+  .split-a { grid-template-columns: 1.15fr .85fr; }
+  .split-b { grid-template-columns: 1.1fr .9fr; }
+  .split-c { grid-template-columns: .9fr 1.1fr; }
+  .gap-sm { --gap: 1rem; }
+  .gap-md { --gap: 1.25rem; }
+  .gap-lg { --gap: 2rem; }
+  .items-center { align-items: center; }
+  .items-start  { align-items: start; }
+
+  .flex-row { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem; }
+  .flex-center { justify-content: center; }
+
+  .stack > * + * { margin-top: 1rem; }
+  .stack-lg > * + * { margin-top: 1.25rem; }
+
+  /* Spacing helpers */
+  .mx-auto { margin-inline: auto; }
+  .mt-6 { margin-top: 1.5rem; }
+  .mt-7 { margin-top: 1.75rem; }
+  .mt-8 { margin-top: 2rem; }
+  .mb-4 { margin-bottom: 1rem; }
+  .mb-5 { margin-bottom: 1.25rem; }
+  .mb-8 { margin-bottom: 2rem; }
+  .maxw-3xl { max-width: 48rem; }
+  .maxw-4xl { max-width: 56rem; }
+
+  /* ============================================================
+     TYPOGRAPHY
+     ============================================================ */
+  .eyebrow {
+    font-size: .78rem; letter-spacing: .22em; text-transform: uppercase;
+    color: var(--color-text-muted); font-weight: 600;
+  }
+  .display-hero  { font-size: clamp(3rem, 7vw, 5.7rem); font-weight: 600; line-height: .98; letter-spacing: -.02em; }
+  .display-xl    { font-size: clamp(2.6rem, 5vw, 4.6rem); font-weight: 500; line-height: 1.04; }
+  .display-lg    { font-size: clamp(2.2rem, 4.4vw, 3.5rem); font-weight: 500; line-height: 1.1; }
+  .display-md    { font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 500; }
+  .lede          { font-size: clamp(1rem, 1.7vw, 1.35rem); font-weight: 400; color: var(--color-text-muted); line-height: 1.6; }
+  .body-lg       { font-size: 1.125rem; color: var(--color-text-muted); line-height: 1.7; }
+  .body          { font-size: 1rem; color: var(--color-text-muted); line-height: 1.7; }
+  .small         { font-size: .9rem; color: var(--color-text-muted); line-height: 1.65; }
+  .muted   { color: var(--color-text-muted); }
+  .accent  { color: var(--color-primary); }
+  .card-label {
+    font-size: .82rem; text-transform: uppercase; letter-spacing: .16em;
+    color: var(--color-text-muted); font-weight: 500;
+  }
+  .card-label.accent { color: var(--color-primary); }
+  .card-title { font-family: var(--font-display); font-weight: 600; color: var(--color-primary); font-size: 1.05rem; }
+  .kpi {
+    font-family: var(--font-display); font-weight: 600; color: var(--color-primary);
+    font-variant-numeric: tabular-nums; line-height: 1;
+  }
+  .kpi.big { font-size: clamp(2.8rem, 5vw, 3.75rem); }
+  .kpi.mid { font-size: clamp(2.2rem, 4vw, 3rem); }
+
+  .hero-word {
+    background: linear-gradient(135deg, var(--color-rose), var(--color-primary) 55%, var(--color-sage));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+
+  /* ============================================================
+     COMPONENTS
+     ============================================================ */
+  .page-progress {
+    position: fixed; top: 0; left: 0; height: 3px; width: 0%; z-index: 120;
+    background: linear-gradient(90deg, var(--color-sage), var(--color-primary), var(--color-rose));
+    box-shadow: 0 0 18px rgba(201,139,139,.3);
+  }
+
+  .page-nav {
+    position: fixed; top: 18px; right: 18px; z-index: 110;
+    display: flex; gap: 6px; align-items: center;
+    background: rgba(255,255,255,.82); border: 1px solid var(--color-border);
+    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    padding: 8px 10px; border-radius: var(--radius-full); box-shadow: var(--shadow-md);
+  }
+  .page-nav a, .page-nav button {
+    font-family: var(--font-body); font-size: .86rem; color: var(--color-text-muted);
+    text-decoration: none; padding: 8px 12px; border-radius: var(--radius-full);
+    border: 1px solid transparent; background: none; cursor: pointer; transition: .2s ease;
+  }
+  .page-nav a:hover, .page-nav button:hover {
+    background: var(--color-rose-soft); color: var(--color-text);
+  }
+  .page-nav .nav-cta {
+    background: var(--color-primary); color: var(--color-surface); font-weight: 600;
+    letter-spacing: .02em;
+  }
+  .page-nav .nav-cta:hover { background: var(--color-primary-hover); color: var(--color-surface); }
+
+  .card {
+    background: var(--color-surface); border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg); box-shadow: var(--shadow-sm);
+    padding: 2rem; transition: transform .3s ease, box-shadow .3s ease;
+  }
+  .card.pad-sm { padding: 1.25rem; }
+  .card.pad-md { padding: 1.5rem; }
+  .card.lift:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+
+  .pill {
+    display: inline-block; border-radius: var(--radius-full); padding: 8px 14px;
+    background: var(--color-rose-soft); border: 1px solid rgba(201,139,139,.24);
+    color: var(--color-rose-deep); font-size: .82rem; font-weight: 500; white-space: nowrap;
+  }
+
+  .gold-line { height: 1px; background: linear-gradient(90deg, transparent, rgba(201,139,139,.55), transparent); }
+
+  .source { font-size: .76rem; color: var(--color-text-faint); line-height: 1.55; }
+
+  .icon-lg { font-size: 2rem; line-height: 1; }
+  .icon-xl { font-size: 3rem; line-height: 1; }
+
+  /* Ambient blobs */
+  .gradient-mesh { position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
+  .blob { position: absolute; border-radius: 50%; filter: blur(100px); animation: float-slow 13s ease-in-out infinite; }
+  .blob:nth-child(2) { animation: float-drift 18s ease-in-out infinite; }
+  .blob:nth-child(3) { animation: float-slow 22s ease-in-out infinite reverse; }
+  @keyframes float-slow { 0%{transform:translate(0,0) scale(1);} 25%{transform:translate(60px,-45px) scale(1.08);} 50%{transform:translate(-35px,40px) scale(.92);} 100%{transform:translate(0,0) scale(1);} }
+  @keyframes float-drift { 0%{transform:translate(0,0) scale(1);} 33%{transform:translate(-50px,-60px) scale(1.12);} 66%{transform:translate(45px,25px) scale(.9);} 100%{transform:translate(0,0) scale(1);} }
+  @keyframes float { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-14px);} }
+
+  /* Photo cards */
+  .hero-photo, .image-card {
+    position: relative; overflow: hidden; border-radius: var(--radius-xl);
+    border: 1px solid var(--color-border-soft); box-shadow: var(--shadow-lg);
+  }
+  .hero-photo img, .image-card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .hero-photo::after, .image-card::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(255,255,255,0) 60%, rgba(61,46,40,.06));
+  }
+  .hero-photo { min-height: 420px; }
+
+  .mock-frame {
+    background: linear-gradient(180deg, rgba(255,255,255,.95), rgba(255,255,255,.75));
+    border: 1px solid var(--color-border); border-radius: var(--radius-xl);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.9), var(--shadow-lg); padding: 1.5rem;
+  }
+  .mood-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .mood-grid .image-card { height: 170px; }
+  .mood-grid .image-card.tall { height: 220px; }
+
+  /* Progress bars */
+  .bar-track { height: 14px; border-radius: var(--radius-full); background: rgba(61,46,40,.06); overflow: hidden; }
+  .bar-fill { height: 100%; width: 0; border-radius: var(--radius-full); background: linear-gradient(90deg, var(--color-sage), var(--color-primary), var(--color-rose)); transition: width 1s cubic-bezier(.2,.7,.2,1); }
+  .bar-row { display: flex; justify-content: space-between; font-size: .9rem; margin-bottom: .5rem; }
+
+  /* Stat ring */
+  .stat-ring { position: relative; width: 130px; height: 130px; border-radius: 50%; display: grid; place-items: center; margin-inline: auto; background: conic-gradient(var(--color-rose) 0 72%, rgba(61,46,40,.06) 72% 100%); }
+  .stat-ring::after { content: ''; width: 88px; height: 88px; border-radius: 50%; background: var(--color-surface); box-shadow: inset 0 0 0 1px rgba(61,46,40,.05); }
+  .stat-ring span { position: absolute; z-index: 1; font-family: var(--font-display); font-size: 28px; font-weight: 600; color: var(--color-text); }
+
+  /* Timeline */
+  .timeline { position: relative; padding-left: 28px; border-left: 2px solid rgba(201,139,139,.45); }
+  .timeline-item { position: relative; }
+  .timeline-item + .timeline-item { margin-top: 1.75rem; }
+  .timeline-dot { position: absolute; left: -35px; top: 2px; width: 14px; height: 14px; border-radius: 50%; background: var(--color-rose); box-shadow: 0 0 0 6px rgba(201,139,139,.10), 0 0 16px rgba(201,139,139,.35); }
+
+  /* Spotlight cursor glow */
+  .spot { position: fixed; inset: 0; pointer-events: none; z-index: 99; }
+
+  /* Reveal-on-scroll */
+  html.js-reveal .reveal { opacity: 0; transform: translateY(20px); }
+  .reveal { transition: opacity .6s ease, transform .65s ease; }
+
+  /* ============================================================
+     RESPONSIVE
+     ============================================================ */
+  @media (max-width: 920px) {
+    .cols-2, .cols-3, .cols-5,
+    .split-a, .split-b, .split-c { grid-template-columns: 1fr; }
+    .cols-4 { grid-template-columns: repeat(2, 1fr); }
+    .mood-grid { grid-template-columns: repeat(2, 1fr); }
+    .hero-photo { min-height: 280px; }
+    .slide { min-height: auto; padding-block: 72px 48px; }
+    .page-nav { left: 12px; right: 12px; top: 12px; justify-content: space-between; }
+    .page-nav .nav-scroll { display: none; }
+  }
+  @media (max-width: 560px) {
+    .cols-4 { grid-template-columns: 1fr; }
+    .mood-grid { grid-template-columns: 1fr; }
+    .mood-grid .image-card, .mood-grid .image-card.tall { height: 170px; }
+    .content { padding-inline: 1.25rem; }
+    .card { border-radius: var(--radius-md); padding: 1.5rem; }
+    .pill { font-size: .76rem; padding: 6px 11px; }
+    .page-nav a, .page-nav button { padding: 7px 10px; font-size: .8rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .2s !important; }
+  }
   </style>
 </head>
 <body>
 <div class="page-progress" id="pageProgress"></div>
+
 <nav class="page-nav" aria-label="Page navigation">
-  <a href="#vision">Vision</a>
-  <a href="#market">Market</a>
-  <a href="#product">Product</a>
-  <a href="#marketplace">Marketplace</a>
-  <a href="#roadmap">Roadmap</a>
-  <a href="app.html" style="background:rgba(214,179,122,.15);border-color:rgba(214,179,122,.35);color:#f3e3c4;font-weight:600;">Try the App →</a>
+  <a class="nav-scroll" href="#vision">Vision</a>
+  <a class="nav-scroll" href="#market">Market</a>
+  <a class="nav-scroll" href="#product">Product</a>
+  <a class="nav-scroll" href="#marketplace">Marketplace</a>
+  <a class="nav-scroll" href="#roadmap">Roadmap</a>
+  <a class="nav-cta" href="https://vow-app-two.vercel.app/" target="_blank" rel="noopener">Try the App →</a>
   <button type="button" id="scrollTopBtn" aria-label="Scroll to top">Top ↑</button>
 </nav>
 
 <div class="spot"></div>
-<div class="deck">
-  <section class="slide active" id="vision" data-slide="1">
+
+<main class="deck">
+
+  <!-- 1 · VISION / HERO -->
+  <section class="slide" id="vision">
     <div class="gradient-mesh">
-      <div class="blob" style="width:520px;height:520px;top:-140px;right:-120px;background:#8f6a42;opacity:.22"></div>
-      <div class="blob" style="width:340px;height:340px;bottom:-80px;left:-60px;background:#d6b37a;opacity:.16"></div>
-      <div class="blob" style="width:280px;height:280px;top:28%;left:18%;background:#f3e3c4;opacity:.12"></div>
+      <div class="blob" style="width:520px;height:520px;top:-140px;right:-120px;background:#c98b8b;opacity:.18"></div>
+      <div class="blob" style="width:340px;height:340px;bottom:-80px;left:-60px;background:#b39680;opacity:.14"></div>
+      <div class="blob" style="width:280px;height:280px;top:28%;left:18%;background:#c98b8b;opacity:.08"></div>
     </div>
-    <canvas class="particle-canvas" style="position:absolute;inset:0;z-index:1"></canvas>
     <div class="content text-center">
-      <div class="reveal hero-photo mx-auto mb-6 max-w-[880px]" style="animation: float 6s ease-in-out infinite;"><img src="https://pplx-res.cloudinary.com/image/upload/pplx_search_images/978e1e24d4831cbaf1c00282eb678ab37feb5991.jpg" alt="Luxury wedding ballroom venue" width="1000" height="667" loading="eager"></div>
-      <div class="reveal section-label mb-5">Premium product concept</div>
-      <h1 class="reveal mx-auto mb-5 max-w-4xl font-display text-[clamp(3rem,7vw,5.7rem)] font-black leading-[0.95] tracking-tight"><span class="hero-word">Vow</span><br>the luxury operating system for modern weddings</h1>
-      <p class="reveal mx-auto max-w-3xl text-[clamp(1rem,1.7vw,1.35rem)] font-light leading-relaxed text-text-secondary">A US-based planning platform where couples and planners can discover venues, curate inspiration, manage budgets, coordinate guests, and run the entire celebration from one refined workspace.</p>
-      <div class="reveal mt-8 flex flex-wrap items-center justify-center gap-3">
-        <span class="mini-pill">Discovery</span>
-        <span class="mini-pill">Planning</span>
-        <span class="mini-pill">Collaboration</span>
-        <span class="mini-pill">Premium marketplace</span>
+      <div class="reveal hero-photo mx-auto mb-8" style="max-width:880px;animation:float 6s ease-in-out infinite;">
+        <img src="./images/hero-ballroom.jpg" alt="Luxury wedding ballroom venue" width="1000" height="667" loading="eager">
+      </div>
+      <div class="reveal eyebrow mb-5">Premium product concept</div>
+      <h1 class="reveal display-hero mx-auto mb-5 maxw-4xl"><span class="hero-word">Vow</span><br>the luxury operating system for modern weddings</h1>
+      <p class="reveal lede mx-auto maxw-3xl">An Australian planning platform where couples and planners discover venues, curate inspiration, manage budgets, coordinate guests, and run the whole celebration from one calm, refined workspace.</p>
+      <div class="reveal flex-row flex-center mt-8">
+        <span class="pill">Discovery</span>
+        <span class="pill">Planning</span>
+        <span class="pill">Collaboration</span>
+        <span class="pill">Curated marketplace</span>
       </div>
     </div>
   </section>
 
-  <section class="slide" id="market" data-slide="2">
+  <!-- 2 · MARKET -->
+  <section class="slide" id="market">
     <div class="gradient-mesh">
-      <div class="blob" style="width:360px;height:360px;top:-90px;right:-80px;background:#8f6a42;opacity:.14"></div>
-      <div class="blob" style="width:260px;height:260px;bottom:-50px;left:-30px;background:#d6b37a;opacity:.10"></div>
+      <div class="blob" style="width:360px;height:360px;top:-90px;right:-80px;background:#8a9a7b;opacity:.11"></div>
+      <div class="blob" style="width:260px;height:260px;bottom:-50px;left:-30px;background:#b39680;opacity:.10"></div>
     </div>
     <div class="content">
-      <div class="section-label reveal mb-4">Opportunity</div>
-      <h2 class="reveal mb-4 max-w-4xl font-display text-[clamp(2.2rem,4.4vw,3.5rem)] font-bold leading-tight">The market is large, emotional, and still fragmented.</h2>
-      <p class="reveal mb-8 max-w-3xl text-lg leading-relaxed text-text-secondary">Most couples stitch together websites, spreadsheets, inspiration boards, vendor directories, and messaging apps. That fragmentation creates room for a premium end-to-end platform.</p>
-      <div class="grid grid-cols-3 gap-6">
-        <div class="premium-card reveal p-8 hover:-translate-y-1 transition">
-          <div class="mb-3 text-sm uppercase tracking-[0.18em] text-text-muted">US spend</div>
-          <div class="kpi mb-2 font-display text-6xl font-bold text-accent-1">$34.2K</div>
-          <p class="text-sm leading-relaxed text-text-secondary">Average wedding cost in The Knot’s 2026 Real Weddings Study, based on 10,474 US couples married in 2025.</p>
+      <div class="reveal eyebrow mb-4">Opportunity</div>
+      <h2 class="reveal display-lg mb-4 maxw-4xl">A large, emotional market that couples still plan across a dozen tabs.</h2>
+      <p class="reveal body-lg mb-8 maxw-3xl">Most couples stitch together a wedding website, a budget spreadsheet, inspiration boards, supplier directories, and group chats. That fragmentation is exactly where a premium end-to-end platform can win.</p>
+      <div class="grid cols-3">
+        <div class="card lift reveal">
+          <div class="card-label mb-4">Average spend</div>
+          <div class="kpi big mb-4">$35,315</div>
+          <p class="small">The average Australian wedding in the Easy Weddings 2025 Annual Survey — up 4.5% year on year, from a typical starting budget of $27,455.</p>
         </div>
-        <div class="premium-card reveal p-8 hover:-translate-y-1 transition">
-          <div class="mb-3 text-sm uppercase tracking-[0.18em] text-text-muted">Annual volume</div>
-          <div class="kpi mb-2 font-display text-6xl font-bold text-accent-1">2.01M</div>
-          <p class="text-sm leading-relaxed text-text-secondary">Estimated US weddings in 2025, indicating a large recurring flow of couples entering the planning funnel each year.</p>
+        <div class="card lift reveal">
+          <div class="card-label mb-4">Weddings a year</div>
+          <div class="kpi big mb-4">120,844</div>
+          <p class="small">Marriages registered across Australia in 2024 (ABS) — up 2.0% on 2023, and a steady flow of couples entering the planning funnel every year.</p>
         </div>
-        <div class="premium-card reveal p-8 hover:-translate-y-1 transition">
-          <div class="mb-3 text-sm uppercase tracking-[0.18em] text-text-muted">Gap in market</div>
-          <div class="kpi mb-2 font-display text-5xl font-bold text-accent-1">One hub</div>
-          <p class="text-sm leading-relaxed text-text-secondary">Current leaders excel in specific areas, but couples still combine multiple tools for inspiration, collaboration, and execution.</p>
+        <div class="card lift reveal">
+          <div class="card-label mb-4">The gap</div>
+          <div class="kpi mid mb-4">One hub</div>
+          <p class="small">Local platforms are strong in parts, but couples still combine several tools for inspiration, collaboration, and execution.</p>
         </div>
       </div>
-      <div class="source reveal mt-7">Sources: The Knot reports the overall average wedding cost at $34,200 from surveyed 2025 US weddings, and Wedding Report estimates 2,011,044 US weddings in 2025. Competitor reviews highlight different strengths across planning ecosystems rather than a single complete workspace.</div>
+      <p class="source reveal mt-7">Sources: Easy Weddings Annual Wedding Survey 2025 (average spend $35,315, up 4.5%; 64% of couples under $40k, 13% over $60k). ABS, <em>Marriages and Divorces, Australia, 2024</em> (120,844 marriages registered, including 4,746 same-gender marriages).</p>
     </div>
   </section>
 
-  <section class="slide" data-slide="3">
+  <!-- 3 · POSITIONING -->
+  <section class="slide">
     <div class="gradient-mesh">
-      <div class="blob" style="width:340px;height:340px;top:-70px;right:-70px;background:#d6b37a;opacity:.1"></div>
-      <div class="blob" style="width:240px;height:240px;bottom:-40px;left:-30px;background:#8f6a42;opacity:.09"></div>
+      <div class="blob" style="width:340px;height:340px;top:-70px;right:-70px;background:#8a9a7b;opacity:.09"></div>
+      <div class="blob" style="width:240px;height:240px;bottom:-40px;left:-30px;background:#b39680;opacity:.09"></div>
     </div>
     <div class="content">
-      <div class="section-label reveal mb-4">Positioning</div>
-      <h2 class="reveal mb-8 font-display text-[clamp(2rem,4vw,3.2rem)] font-bold">What Vow would be</h2>
-      <div class="grid grid-cols-2 gap-6">
-        <div class="premium-card reveal p-8">
-          <div class="mb-3 text-sm uppercase tracking-[0.18em] text-accent-1">For couples</div>
-          <ul class="space-y-4 text-[1rem] leading-relaxed text-text-secondary">
-            <li>Beautiful planning workspace that combines inspiration, vendor discovery, guest logistics, and payment tracking.</li>
-            <li>Luxury feel without planner-only complexity, with elegant onboarding based on date, budget, city, and aesthetic.</li>
-            <li>A wedding website, RSVP flow, registry layer, and day-of timeline that all stay in sync.</li>
+      <div class="reveal eyebrow mb-4">Positioning</div>
+      <h2 class="reveal display-md mb-8">What Vow would be</h2>
+      <div class="grid cols-2">
+        <div class="card reveal">
+          <div class="card-label accent mb-4">For couples</div>
+          <ul class="stack-lg body">
+            <li>A beautiful planning workspace that pulls inspiration, supplier discovery, guest logistics, and payment tracking into one place.</li>
+            <li>A luxury feel without planner-only complexity — onboarding shaped around date, budget, city, and aesthetic.</li>
+            <li>A wedding website, RSVP flow, registry layer, and day-of run sheet that all stay in sync.</li>
           </ul>
         </div>
-        <div class="premium-card reveal p-8">
-          <div class="mb-3 text-sm uppercase tracking-[0.18em] text-accent-1">For planners & vendors</div>
-          <ul class="space-y-4 text-[1rem] leading-relaxed text-text-secondary">
-            <li>Multi-client dashboard for planners, with role-based collaboration, approvals, and communications.</li>
-            <li>Curated vendor storefronts with premium imagery, transparent packages, availability, and lead qualification.</li>
-            <li>High-intent marketplace model rather than a generic directory flooded with undifferentiated listings.</li>
+        <div class="card reveal">
+          <div class="card-label accent mb-4">For planners &amp; suppliers</div>
+          <ul class="stack-lg body">
+            <li>A multi-client dashboard for planners, with role-based collaboration, approvals, and messaging.</li>
+            <li>Curated supplier storefronts with premium imagery, clear packages, real availability, and qualified leads.</li>
+            <li>A high-intent marketplace — not a generic directory buried in undifferentiated listings.</li>
           </ul>
         </div>
       </div>
-      <div class="grid grid-cols-4 gap-4 mt-7">
-        <div class="premium-card reveal p-5 text-center"><div class="text-3xl mb-2">⌘</div><div class="text-sm uppercase tracking-[0.16em] text-text-muted">Curated</div></div>
-        <div class="premium-card reveal p-5 text-center"><div class="text-3xl mb-2">♡</div><div class="text-sm uppercase tracking-[0.16em] text-text-muted">Emotional UX</div></div>
-        <div class="premium-card reveal p-5 text-center"><div class="text-3xl mb-2">◌</div><div class="text-sm uppercase tracking-[0.16em] text-text-muted">Collaborative</div></div>
-        <div class="premium-card reveal p-5 text-center"><div class="text-3xl mb-2">✦</div><div class="text-sm uppercase tracking-[0.16em] text-text-muted">Premium brand</div></div>
+      <div class="grid cols-4 gap-sm mt-7">
+        <div class="card pad-sm reveal text-center"><div class="icon-lg mb-4">⌘</div><div class="card-label">Curated</div></div>
+        <div class="card pad-sm reveal text-center"><div class="icon-lg mb-4">♡</div><div class="card-label">Emotional UX</div></div>
+        <div class="card pad-sm reveal text-center"><div class="icon-lg mb-4">◌</div><div class="card-label">Collaborative</div></div>
+        <div class="card pad-sm reveal text-center"><div class="icon-lg mb-4">✦</div><div class="card-label">Premium brand</div></div>
       </div>
     </div>
   </section>
 
-  <section class="slide" id="product" data-slide="4">
+  <!-- 4 · PRODUCT PILLARS -->
+  <section class="slide" id="product">
     <div class="gradient-mesh">
-      <div class="blob" style="width:380px;height:380px;top:-110px;left:-90px;background:#8f6a42;opacity:.14"></div>
-      <div class="blob" style="width:260px;height:260px;bottom:-50px;right:-50px;background:#f3e3c4;opacity:.08"></div>
+      <div class="blob" style="width:380px;height:380px;top:-110px;left:-90px;background:#8a9a7b;opacity:.11"></div>
+      <div class="blob" style="width:260px;height:260px;bottom:-50px;right:-50px;background:#8a9a7b;opacity:.07"></div>
     </div>
     <div class="content">
-      <div class="section-label reveal mb-4">Product pillars</div>
-      <h2 class="reveal mb-8 font-display text-[clamp(2rem,4vw,3.2rem)] font-bold">Six experiences, one seamless platform</h2>
-      <div class="grid grid-cols-3 gap-5">
-        <div class="premium-card reveal p-6 hover:-translate-y-1 transition"><div class="mb-3 text-3xl">🏛</div><div class="mb-2 font-semibold text-accent-1">Venue & vendor discovery</div><div class="text-sm leading-relaxed text-text-secondary">Curated US listings, city filters, availability, pricing tiers, style tags, and premium profiles.</div></div>
-        <div class="premium-card reveal p-6 hover:-translate-y-1 transition"><div class="mb-3 text-3xl">🎞</div><div class="mb-2 font-semibold text-accent-1">Inspiration studio</div><div class="text-sm leading-relaxed text-text-secondary">Mood boards, palette extraction, save-from-web, and style-led recommendations that bridge inspiration to action.</div></div>
-        <div class="premium-card reveal p-6 hover:-translate-y-1 transition"><div class="mb-3 text-3xl">💳</div><div class="mb-2 font-semibold text-accent-1">Budget operating layer</div><div class="text-sm leading-relaxed text-text-secondary">Category planning, payment schedules, deposits, balances due, and spend-vs-plan visibility.</div></div>
-        <div class="premium-card reveal p-6 hover:-translate-y-1 transition"><div class="mb-3 text-3xl">✉️</div><div class="mb-2 font-semibold text-accent-1">Guest & RSVP system</div><div class="text-sm leading-relaxed text-text-secondary">Guest database, meal preferences, seating logic, reminders, and website-connected RSVP tracking.</div></div>
-        <div class="premium-card reveal p-6 hover:-translate-y-1 transition"><div class="mb-3 text-3xl">🗓</div><div class="mb-2 font-semibold text-accent-1">Timeline & checklist</div><div class="text-sm leading-relaxed text-text-secondary">Auto-generated planning milestones, assigned tasks, and a polished day-of run sheet for every stakeholder.</div></div>
-        <div class="premium-card reveal p-6 hover:-translate-y-1 transition"><div class="mb-3 text-3xl">🤍</div><div class="mb-2 font-semibold text-accent-1">Planner collaboration</div><div class="text-sm leading-relaxed text-text-secondary">Shared workspaces, approvals, notes, and a pro dashboard for planners managing multiple weddings.</div></div>
+      <div class="reveal eyebrow mb-4">Product pillars</div>
+      <h2 class="reveal display-md mb-8">Six experiences, one seamless platform</h2>
+      <div class="grid cols-3 gap-md">
+        <div class="card pad-md lift reveal"><div class="icon-lg mb-4">🏛</div><div class="card-title mb-4">Venue &amp; supplier discovery</div><p class="small">Curated Australian listings with city and region filters, availability, pricing tiers, style tags, and premium profiles.</p></div>
+        <div class="card pad-md lift reveal"><div class="icon-lg mb-4">🎞</div><div class="card-title mb-4">Inspiration studio</div><p class="small">Mood boards, palette extraction, save-from-web, and style-led recommendations that carry inspiration through to action.</p></div>
+        <div class="card pad-md lift reveal"><div class="icon-lg mb-4">💳</div><div class="card-title mb-4">Budget operating layer</div><p class="small">Category planning, payment schedules, deposits, balances due, and clear spend-versus-plan visibility.</p></div>
+        <div class="card pad-md lift reveal"><div class="icon-lg mb-4">✉️</div><div class="card-title mb-4">Guest &amp; RSVP system</div><p class="small">Guest list, meal preferences, seating logic, reminders, and RSVPs connected straight to the wedding website.</p></div>
+        <div class="card pad-md lift reveal"><div class="icon-lg mb-4">🗓</div><div class="card-title mb-4">Timeline &amp; checklist</div><p class="small">Auto-generated planning milestones, assigned tasks, and a polished day-of run sheet for every stakeholder.</p></div>
+        <div class="card pad-md lift reveal"><div class="icon-lg mb-4">🤍</div><div class="card-title mb-4">Planner collaboration</div><p class="small">Shared workspaces, approvals, notes, and a pro dashboard for planners running several weddings at once.</p></div>
       </div>
     </div>
   </section>
 
-  <section class="slide" data-slide="5">
+  <!-- 5 · EXPERIENCE VISION -->
+  <section class="slide">
     <div class="gradient-mesh">
-      <div class="blob" style="width:460px;height:460px;top:-140px;right:-140px;background:#8f6a42;opacity:.18"></div>
-      <div class="blob" style="width:280px;height:280px;bottom:-60px;left:-50px;background:#d6b37a;opacity:.10"></div>
+      <div class="blob" style="width:460px;height:460px;top:-140px;right:-140px;background:#c98b8b;opacity:.14"></div>
+      <div class="blob" style="width:280px;height:280px;bottom:-60px;left:-50px;background:#b39680;opacity:.10"></div>
     </div>
     <div class="content">
-      <div class="section-label reveal mb-4">Experience vision</div>
-      <div class="grid grid-cols-[1.15fr_.85fr] gap-8 items-center">
+      <div class="reveal eyebrow mb-4">Experience vision</div>
+      <div class="grid split-a gap-lg items-center">
         <div>
-          <h2 class="reveal mb-4 font-display text-[clamp(2.2rem,4.2vw,3.4rem)] font-bold leading-tight">The interface should feel more like luxury hospitality than project management.</h2>
-          <p class="reveal mb-6 max-w-2xl text-lg leading-relaxed text-text-secondary">The market leaders offer planning tools, websites, registry features, or broad vendor directories, but reviews note tradeoffs between marketplace breadth, design quality, and collaboration depth. Vow’s edge would be premium curation plus a calmer, more editorial interface.</p>
-          <div class="reveal grid grid-cols-2 gap-4">
-            <div class="premium-card p-5"><div class="mb-2 text-sm uppercase tracking-[0.18em] text-text-muted">Mood</div><div class="font-semibold text-accent-1">Warm, cinematic, ceremonial</div></div>
-            <div class="premium-card p-5"><div class="mb-2 text-sm uppercase tracking-[0.18em] text-text-muted">Design language</div><div class="font-semibold text-accent-1">Editorial typography + high-touch cards</div></div>
+          <h2 class="reveal display-lg mb-4">It should feel more like luxury hospitality than project management.</h2>
+          <p class="reveal body-lg mb-8 maxw-3xl">Australia's leading platforms cover supplier directories, planning tools, and wedding websites well — but couples still trade off marketplace breadth against design quality and collaboration depth. Vow's edge is premium curation paired with a calmer, more editorial interface.</p>
+          <div class="reveal grid cols-2 gap-sm">
+            <div class="card pad-sm"><div class="card-label mb-4">Mood</div><div class="card-title">Warm, cinematic, ceremonial</div></div>
+            <div class="card pad-sm"><div class="card-label mb-4">Design language</div><div class="card-title">Editorial type + high-touch cards</div></div>
           </div>
         </div>
-        <div class="reveal hero-photo"><img src="https://pplx-res.cloudinary.com/image/upload/pplx_search_images/9ff1fe0a30ba3d626a00b1f8e2459195b7368afb.jpg" alt="Bride and groom in opulent ballroom" width="803" height="568" loading="lazy"></div>
-        </div>
+        <div class="reveal hero-photo"><img src="./images/couple-vision.jpg" alt="Couple in an opulent ballroom" width="803" height="568" loading="lazy"></div>
       </div>
-    </section>
-
-  <section class="slide" data-slide="6">
-    <div class="gradient-mesh">
-      <div class="blob" style="width:350px;height:350px;top:-80px;right:-80px;background:#d6b37a;opacity:.09"></div>
-      <div class="blob" style="width:260px;height:260px;bottom:-60px;left:-40px;background:#8f6a42;opacity:.1"></div>
-    </div>
-    <div class="content">
-      <div class="section-label reveal mb-4">User journey</div>
-      <h2 class="reveal mb-8 font-display text-[clamp(2rem,4vw,3.2rem)] font-bold">From engagement to wedding weekend</h2>
-      <div class="grid grid-cols-5 gap-4 relative">
-        <div class="deco-shape" data-speed="0.03" style="width:180px;height:180px;right:10%;top:-30px;background:radial-gradient(circle,#d6b37a55,transparent 70%)"></div>
-        <div class="premium-card reveal p-5"><div class="mb-2 text-sm uppercase tracking-[0.18em] text-text-muted">01</div><div class="mb-2 font-semibold text-accent-1">Profile setup</div><div class="text-sm text-text-secondary">Date, city, guest count, budget, style profile.</div></div>
-        <div class="premium-card reveal p-5"><div class="mb-2 text-sm uppercase tracking-[0.18em] text-text-muted">02</div><div class="mb-2 font-semibold text-accent-1">Discover</div><div class="text-sm text-text-secondary">Browse venues, vendors, and editorial lookbooks.</div></div>
-        <div class="premium-card reveal p-5"><div class="mb-2 text-sm uppercase tracking-[0.18em] text-text-muted">03</div><div class="mb-2 font-semibold text-accent-1">Organize</div><div class="text-sm text-text-secondary">Build budget, guest list, tasks, and contracts.</div></div>
-        <div class="premium-card reveal p-5"><div class="mb-2 text-sm uppercase tracking-[0.18em] text-text-muted">04</div><div class="mb-2 font-semibold text-accent-1">Collaborate</div><div class="text-sm text-text-secondary">Partner, planner, and family roles with approvals.</div></div>
-        <div class="premium-card reveal p-5"><div class="mb-2 text-sm uppercase tracking-[0.18em] text-text-muted">05</div><div class="mb-2 font-semibold text-accent-1">Execute</div><div class="text-sm text-text-secondary">Final timeline, seating, communications, and day-of control.</div></div>
-      </div>
-      <div class="gold-line reveal mt-8 mb-6"></div>
-      <p class="reveal max-w-3xl text-lg leading-relaxed text-text-secondary">This flow turns what is normally a patchwork of apps into a single continuous journey with fewer handoffs and less cognitive load.</p>
     </div>
   </section>
 
-  <section class="slide" id="marketplace" data-slide="7">
+  <!-- 6 · USER JOURNEY -->
+  <section class="slide">
     <div class="gradient-mesh">
-      <div class="blob" style="width:340px;height:340px;top:-80px;left:-80px;background:#8f6a42;opacity:.14"></div>
-      <div class="blob" style="width:280px;height:280px;bottom:-70px;right:-40px;background:#d6b37a;opacity:.09"></div>
+      <div class="blob" style="width:350px;height:350px;top:-80px;right:-80px;background:#8a9a7b;opacity:.08"></div>
+      <div class="blob" style="width:260px;height:260px;bottom:-60px;left:-40px;background:#8a9a7b;opacity:.10"></div>
     </div>
-    <canvas class="particle-canvas-ambient" style="position:absolute;inset:0;z-index:1"></canvas>
     <div class="content">
-      <div class="section-label reveal mb-4">Marketplace</div>
-      <h2 class="reveal mb-8 font-display text-[clamp(2rem,4vw,3.2rem)] font-bold">A curated vendor marketplace, not a noisy directory</h2>
-      <div class="grid grid-cols-[1.1fr_.9fr] gap-8 items-center">
-        <div class="grid grid-cols-2 gap-5">
-          <div class="premium-card reveal p-6"><div class="mb-2 font-semibold text-accent-1">Rich profiles</div><div class="text-sm leading-relaxed text-text-secondary">Photography, package tiers, FAQs, style tags, response time, and real availability windows.</div></div>
-          <div class="premium-card reveal p-6"><div class="mb-2 font-semibold text-accent-1">Shortlists & compare</div><div class="text-sm leading-relaxed text-text-secondary">Save favorites and compare up to three vendors on fit, spend, and aesthetic alignment.</div></div>
-          <div class="premium-card reveal p-6"><div class="mb-2 font-semibold text-accent-1">Lead quality</div><div class="text-sm leading-relaxed text-text-secondary">Intent-rich inquiries informed by date, budget, guest size, and event style.</div></div>
-          <div class="premium-card reveal p-6"><div class="mb-2 font-semibold text-accent-1">Premium trust signals</div><div class="text-sm leading-relaxed text-text-secondary">Badges for women-owned, LGBTQ+ affirming, sustainable, luxury, and destination-specialist vendors.</div></div>
+      <div class="reveal eyebrow mb-4">User journey</div>
+      <h2 class="reveal display-md mb-8">From engagement to wedding weekend</h2>
+      <div class="grid cols-5 gap-sm">
+        <div class="card pad-sm reveal"><div class="card-label mb-4">01</div><div class="card-title mb-4">Set up</div><p class="small">Date, city, guest count, budget, and style profile.</p></div>
+        <div class="card pad-sm reveal"><div class="card-label mb-4">02</div><div class="card-title mb-4">Discover</div><p class="small">Browse venues, suppliers, and editorial lookbooks.</p></div>
+        <div class="card pad-sm reveal"><div class="card-label mb-4">03</div><div class="card-title mb-4">Organise</div><p class="small">Build the budget, guest list, tasks, and contracts.</p></div>
+        <div class="card pad-sm reveal"><div class="card-label mb-4">04</div><div class="card-title mb-4">Collaborate</div><p class="small">Partner, planner, and family roles with approvals.</p></div>
+        <div class="card pad-sm reveal"><div class="card-label mb-4">05</div><div class="card-title mb-4">Execute</div><p class="small">Final timeline, seating, comms, and day-of control.</p></div>
+      </div>
+      <div class="gold-line reveal mt-8 mb-8"></div>
+      <p class="reveal body-lg maxw-3xl">This turns what is normally a patchwork of apps into one continuous journey — fewer handoffs, less cognitive load, and a single source of truth for the day.</p>
+    </div>
+  </section>
+
+  <!-- 7 · MARKETPLACE -->
+  <section class="slide" id="marketplace">
+    <div class="gradient-mesh">
+      <div class="blob" style="width:340px;height:340px;top:-80px;left:-80px;background:#8a9a7b;opacity:.11"></div>
+      <div class="blob" style="width:280px;height:280px;bottom:-70px;right:-40px;background:#8a9a7b;opacity:.08"></div>
+    </div>
+    <div class="content">
+      <div class="reveal eyebrow mb-4">Marketplace</div>
+      <h2 class="reveal display-md mb-8">A curated supplier marketplace, not a noisy directory</h2>
+      <div class="grid split-b gap-lg items-center">
+        <div class="grid cols-2 gap-md">
+          <div class="card pad-md reveal"><div class="card-title mb-4">Rich profiles</div><p class="small">Photography, package tiers, FAQs, style tags, response times, and real availability windows.</p></div>
+          <div class="card pad-md reveal"><div class="card-title mb-4">Shortlists &amp; compare</div><p class="small">Save favourites and compare up to three suppliers on fit, spend, and aesthetic alignment.</p></div>
+          <div class="card pad-md reveal"><div class="card-title mb-4">Lead quality</div><p class="small">Intent-rich enquiries shaped by date, budget, guest count, and event style.</p></div>
+          <div class="card pad-md reveal"><div class="card-title mb-4">Trust signals</div><p class="small">Badges for women-owned, LGBTQ+ affirming, sustainable, luxury, and destination specialists.</p></div>
         </div>
-        <div class="premium-card reveal p-7">
-          <div class="mb-5 text-sm uppercase tracking-[0.18em] text-text-muted">How it beats incumbents</div>
-          <div class="space-y-5">
-            <div>
-              <div class="mb-2 flex justify-between text-sm"><span>Design quality</span><span>92</span></div>
-              <div class="bar-track"><div class="bar-fill" data-width="92"></div></div>
-            </div>
-            <div>
-              <div class="mb-2 flex justify-between text-sm"><span>Marketplace curation</span><span>88</span></div>
-              <div class="bar-track"><div class="bar-fill" data-width="88"></div></div>
-            </div>
-            <div>
-              <div class="mb-2 flex justify-between text-sm"><span>Planner collaboration</span><span>85</span></div>
-              <div class="bar-track"><div class="bar-fill" data-width="85"></div></div>
-            </div>
-            <div>
-              <div class="mb-2 flex justify-between text-sm"><span>One-platform coherence</span><span>94</span></div>
-              <div class="bar-track"><div class="bar-fill" data-width="94"></div></div>
-            </div>
+        <div class="card reveal">
+          <div class="card-label mb-5">Where Vow would win</div>
+          <div class="stack-lg">
+            <div><div class="bar-row"><span>Design quality</span><span>92</span></div><div class="bar-track"><div class="bar-fill" data-width="92"></div></div></div>
+            <div><div class="bar-row"><span>Marketplace curation</span><span>88</span></div><div class="bar-track"><div class="bar-fill" data-width="88"></div></div></div>
+            <div><div class="bar-row"><span>Planner collaboration</span><span>85</span></div><div class="bar-track"><div class="bar-fill" data-width="85"></div></div></div>
+            <div><div class="bar-row"><span>One-platform coherence</span><span>94</span></div><div class="bar-track"><div class="bar-fill" data-width="94"></div></div></div>
           </div>
-          <div class="source mt-5">The Knot is strong on vendor scale and guest tools, while Zola is noted for design-forward websites and registry experience. Reviews also point to collaboration and visualization gaps that a more integrated premium product could address.</div>
+          <p class="source mt-7">Easy Weddings is strong on supplier scale and reviews (5,000+ Australian businesses), while WedShed is known for a curated marketplace of unique venues and vendors. Both leave room on unified planning and collaboration that a premium, end-to-end product could close.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="slide" data-slide="8">
+  <!-- 8 · INSPIRATION ENGINE -->
+  <section class="slide">
     <div class="gradient-mesh">
-      <div class="blob" style="width:400px;height:400px;top:-110px;right:-100px;background:#f3e3c4;opacity:.08"></div>
-      <div class="blob" style="width:260px;height:260px;bottom:-50px;left:-50px;background:#8f6a42;opacity:.11"></div>
+      <div class="blob" style="width:400px;height:400px;top:-110px;right:-100px;background:#8a9a7b;opacity:.07"></div>
+      <div class="blob" style="width:260px;height:260px;bottom:-50px;left:-50px;background:#b39680;opacity:.10"></div>
     </div>
     <div class="content">
-      <div class="section-label reveal mb-4">Inspiration engine</div>
-      <h2 class="reveal mb-8 font-display text-[clamp(2rem,4vw,3.2rem)] font-bold">Pinterest energy, but connected to real decisions</h2>
-      <div class="grid grid-cols-[.9fr_1.1fr] gap-8 items-center">
-        <div class="premium-card reveal p-8">
-          <div class="mb-4 text-sm uppercase tracking-[0.18em] text-text-muted">Core idea</div>
-          <ul class="space-y-4 text-[1rem] leading-relaxed text-text-secondary">
+      <div class="reveal eyebrow mb-4">Inspiration engine</div>
+      <h2 class="reveal display-md mb-8">Inspiration that connects to real decisions</h2>
+      <div class="grid split-c gap-lg items-center">
+        <div class="card reveal">
+          <div class="card-label mb-5">Core idea</div>
+          <ul class="stack-lg body">
             <li>Mood boards with drag-and-drop images, palettes, notes, and venue references.</li>
-            <li>Save inspiration from across the web, then connect those boards directly to matched vendors and venue collections.</li>
-            <li>Translate aesthetic intent into a shortlist instead of leaving it trapped in standalone inspiration tools.</li>
+            <li>Save inspiration from across the web, then link those boards straight to matched suppliers and venue collections.</li>
+            <li>Turn aesthetic intent into a shortlist, instead of leaving it stranded in a standalone inspiration app.</li>
           </ul>
         </div>
-        <div class="reveal mock-frame p-6">
+        <div class="reveal mock-frame">
           <div class="mood-grid">
-            <div class="image-card"><img src="https://pplx-res.cloudinary.com/image/upload/pplx_search_images/f038ae96c45e0086cd96ac87192d17fbec1d1cad.jpg" alt="Wedding mood board flat lay with shoes invitation and rings" width="736" height="1104" loading="lazy"></div>
-            <div class="image-card tall"><img src="https://pplx-res.cloudinary.com/image/upload/pplx_search_images/7036ced8e4b469fee17034363163a78a57185a66.jpg" alt="Elegant outdoor wedding reception tablescape" width="620" height="930" loading="lazy"></div>
-            <div class="image-card"><img src="https://pplx-res.cloudinary.com/image/upload/pplx_search_images/898fdf8face392959fad69931df4ab7f40a33b9d.jpg" alt="Wedding stationery and accessories flat lay" width="736" height="1104" loading="lazy"></div>
-            <div class="image-card tall"><img src="https://pplx-res.cloudinary.com/image/upload/pplx_search_images/3790f4cb1966aaec835d1e9d4362266cc2e590bc.jpg" alt="Elegant tented wedding reception tablescape" width="1707" height="2560" loading="lazy"></div>
-            <div class="image-card"><img src="https://pplx-res.cloudinary.com/image/upload/pplx_search_images/8f32ea325fa6e62ae07c9827ee8dde518e2edf6f.jpg" alt="Wedding invitation and accessories flat lay" width="735" height="1097" loading="lazy"></div>
-            <div class="image-card tall"><img src="https://pplx-res.cloudinary.com/image/upload/pplx_search_images/d58c002c7ce68c8cbd77cd92f19828955eff35de.jpg" alt="Floral wedding tablescape inside a venue" width="620" height="775" loading="lazy"></div>
+            <div class="image-card"><img src="./images/mood-flatlay-1.jpg" alt="Wedding flat lay with shoes, invitation, and rings" width="736" height="1104" loading="lazy"></div>
+            <div class="image-card tall"><img src="./images/mood-tablescape-tall.jpg" alt="Outdoor wedding reception tablescape" width="620" height="930" loading="lazy"></div>
+            <div class="image-card"><img src="./images/mood-stationery.jpg" alt="Wedding stationery and accessories flat lay" width="736" height="1104" loading="lazy"></div>
+            <div class="image-card tall"><img src="./images/mood-tented-tall.jpg" alt="Tented wedding reception tablescape" width="1707" height="2560" loading="lazy"></div>
+            <div class="image-card"><img src="./images/mood-florals.jpg" alt="Wedding invitation and floral accessories flat lay" width="735" height="1097" loading="lazy"></div>
+            <div class="image-card tall"><img src="./images/venue-floral.jpg" alt="Floral wedding tablescape inside a venue" width="620" height="775" loading="lazy"></div>
           </div>
-          <div class="mt-5 flex gap-3 flex-wrap">
-            <span class="mini-pill">Old money garden</span>
-            <span class="mini-pill">Candlelit dinner</span>
-            <span class="mini-pill">Italian summer</span>
+          <div class="flex-row mt-6">
+            <span class="pill">Old-money garden</span>
+            <span class="pill">Candlelit dinner</span>
+            <span class="pill">Italian summer</span>
           </div>
         </div>
       </div>
-      <div class="source reveal mt-6">Independent reviews note that even when current apps offer matching themes or website customization, couples often still face a “visualization gap” between inspiration and actual venue/vendor fit.</div>
+      <p class="source reveal mt-7">Even when today's apps offer matching themes or website customisation, couples often hit a "visualisation gap" between the inspiration they save and the venues and suppliers that actually fit.</p>
     </div>
   </section>
 
-  <section class="slide" data-slide="9">
+  <!-- 9 · OPERATIONS LAYER -->
+  <section class="slide">
     <div class="gradient-mesh">
-      <div class="blob" style="width:360px;height:360px;top:-100px;right:-80px;background:#8f6a42;opacity:.12"></div>
-      <div class="blob" style="width:260px;height:260px;bottom:-60px;left:-40px;background:#d6b37a;opacity:.10"></div>
+      <div class="blob" style="width:360px;height:360px;top:-100px;right:-80px;background:#c98b8b;opacity:.10"></div>
+      <div class="blob" style="width:260px;height:260px;bottom:-60px;left:-40px;background:#b39680;opacity:.10"></div>
     </div>
     <div class="content">
-      <div class="section-label reveal mb-4">Operations layer</div>
-      <h2 class="reveal mb-8 font-display text-[clamp(2rem,4vw,3.2rem)] font-bold">Budget, checklist, guests, and timeline all talking to each other</h2>
-      <div class="grid grid-cols-3 gap-6">
-        <div class="premium-card reveal p-7 text-center">
-          <div class="mx-auto mb-4 stat-ring"><div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:1;font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:#f3e3c4">72%</div></div>
-          <div class="font-semibold text-accent-1">Budget visibility</div>
-          <p class="mt-2 text-sm leading-relaxed text-text-secondary">Planned vs. actual spend, deposits, and vendor due dates in one place.</p>
+      <div class="reveal eyebrow mb-4">Operations layer</div>
+      <h2 class="reveal display-md mb-8">Budget, checklist, guests, and timeline all talking to each other</h2>
+      <div class="grid cols-3">
+        <div class="card reveal text-center">
+          <div class="stat-ring mb-4"><span>72%</span></div>
+          <div class="card-title mb-4">Budget visibility</div>
+          <p class="small">Planned versus actual spend, deposits, and supplier due dates in one place.</p>
         </div>
-        <div class="premium-card reveal p-7 text-center">
-          <div class="mb-4 text-5xl">☑</div>
-          <div class="font-semibold text-accent-1">Smart checklist</div>
-          <p class="mt-2 text-sm leading-relaxed text-text-secondary">Date-based tasks generated from the wedding timeline and assigned to partner or planner.</p>
+        <div class="card reveal text-center">
+          <div class="icon-xl mb-4">☑</div>
+          <div class="card-title mb-4">Smart checklist</div>
+          <p class="small">Date-based tasks generated from the wedding timeline and assigned to partner or planner.</p>
         </div>
-        <div class="premium-card reveal p-7 text-center">
-          <div class="mb-4 text-5xl">◎</div>
-          <div class="font-semibold text-accent-1">Guest orchestration</div>
-          <p class="mt-2 text-sm leading-relaxed text-text-secondary">RSVPs, meals, seating, hotel blocks, and event communications with one source of truth.</p>
+        <div class="card reveal text-center">
+          <div class="icon-xl mb-4">◎</div>
+          <div class="card-title mb-4">Guest orchestration</div>
+          <p class="small">RSVPs, meals, seating, accommodation blocks, and event comms with one source of truth.</p>
         </div>
       </div>
-      <div class="grid grid-cols-2 gap-6 mt-7">
-        <div class="premium-card reveal p-6"><div class="mb-2 font-semibold text-accent-1">Why it matters</div><div class="text-sm leading-relaxed text-text-secondary">Budget pressure is meaningful because US couples are commonly spending in the low-to-mid $30,000s, making clear workflow and payment visibility central to trust.</div></div>
-        <div class="premium-card reveal p-6"><div class="mb-2 font-semibold text-accent-1">Premium twist</div><div class="text-sm leading-relaxed text-text-secondary">The app should feel reassuring and high-touch during stressful decisions, with elegant reminders, concierge-style nudges, and clean stakeholder communication.</div></div>
+      <div class="grid cols-2 mt-7">
+        <div class="card pad-md reveal"><div class="card-title mb-4">Why it matters</div><p class="small">With Australian couples commonly spending in the mid-$30,000s, clear workflow and payment visibility sit right at the centre of trust.</p></div>
+        <div class="card pad-md reveal"><div class="card-title mb-4">The premium twist</div><p class="small">The app should feel reassuring and high-touch during stressful decisions — elegant reminders, gentle nudges, and clean communication with everyone involved.</p></div>
       </div>
     </div>
   </section>
 
-  <section class="slide" id="roadmap" data-slide="10">
+  <!-- 10 · ROADMAP -->
+  <section class="slide" id="roadmap">
     <div class="gradient-mesh">
-      <div class="blob" style="width:420px;height:420px;top:-110px;left:-100px;background:#8f6a42;opacity:.15"></div>
-      <div class="blob" style="width:260px;height:260px;bottom:-60px;right:-40px;background:#d6b37a;opacity:.10"></div>
+      <div class="blob" style="width:420px;height:420px;top:-110px;left:-100px;background:#8a9a7b;opacity:.12"></div>
+      <div class="blob" style="width:260px;height:260px;bottom:-60px;right:-40px;background:#b39680;opacity:.10"></div>
     </div>
     <div class="content">
-      <div class="section-label reveal mb-4">Build plan</div>
-      <h2 class="reveal mb-8 font-display text-[clamp(2rem,4vw,3.2rem)] font-bold">A practical roadmap to launch</h2>
-      <div class="grid grid-cols-2 gap-8 items-start">
-        <div class="premium-card reveal p-8">
-          <div style="position:relative;padding-left:28px;border-left:2px solid rgba(214,179,122,.5)">
-            <div class="space-y-7">
-              <div style="position:relative;">
-                <div class="timeline-dot" style="position:absolute;left:-35px;top:2px;"></div>
-                <div class="text-sm uppercase tracking-[0.18em] text-text-muted">Phase 1</div>
-                <div class="font-semibold text-accent-1">MVP marketplace + planning core</div>
-                <div class="text-sm leading-relaxed text-text-secondary">Auth, onboarding, vendor discovery, shortlist, budget, checklist, and wedding dashboard.</div>
-              </div>
-              <div style="position:relative;">
-                <div class="timeline-dot" style="position:absolute;left:-35px;top:2px;"></div>
-                <div class="text-sm uppercase tracking-[0.18em] text-text-muted">Phase 2</div>
-                <div class="font-semibold text-accent-1">Guest tools + website builder</div>
-                <div class="text-sm leading-relaxed text-text-secondary">RSVP flows, guest list, wedding website templates, and seating chart logic.</div>
-              </div>
-              <div style="position:relative;">
-                <div class="timeline-dot" style="position:absolute;left:-35px;top:2px;"></div>
-                <div class="text-sm uppercase tracking-[0.18em] text-text-muted">Phase 3</div>
-                <div class="font-semibold text-accent-1">Planner mode + AI concierge</div>
-                <div class="text-sm leading-relaxed text-text-secondary">Multi-client workspaces, vendor messaging, personalized recommendations, and smart task assistance.</div>
-              </div>
+      <div class="reveal eyebrow mb-4">Build plan</div>
+      <h2 class="reveal display-md mb-8">A practical roadmap to launch</h2>
+      <div class="grid cols-2 gap-lg items-start">
+        <div class="card reveal">
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="card-label mb-4">Phase 1</div>
+              <div class="card-title mb-4">MVP marketplace + planning core</div>
+              <p class="small">Auth, onboarding, supplier discovery, shortlist, budget, checklist, and the wedding dashboard.</p>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="card-label mb-4">Phase 2</div>
+              <div class="card-title mb-4">Guest tools + website builder</div>
+              <p class="small">RSVP flows, guest list, wedding website templates, and seating-chart logic.</p>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="card-label mb-4">Phase 3</div>
+              <div class="card-title mb-4">Planner mode + AI concierge</div>
+              <p class="small">Multi-client workspaces, supplier messaging, personalised recommendations, and smart task help.</p>
             </div>
           </div>
         </div>
-        <div class="grid grid-cols-1 gap-5">
-          <div class="premium-card reveal p-6"><div class="mb-2 font-semibold text-accent-1">Recommended stack</div><div class="text-sm leading-relaxed text-text-secondary">Next.js for the web app, Supabase for auth/database/storage, Stripe for payments, Mapbox or Google Maps for geographic discovery, and Figma for the design system and mockups.</div></div>
-          <div class="premium-card reveal p-6"><div class="mb-2 font-semibold text-accent-1">Design workflow</div><div class="text-sm leading-relaxed text-text-secondary">Brand direction → information architecture → Figma wireframes → high-fidelity product mockups → clickable prototype → production design system.</div></div>
-          <div class="premium-card reveal p-6"><div class="mb-2 font-semibold text-accent-1">Mockup sources</div><div class="text-sm leading-relaxed text-text-secondary">Figma offers wedding website templates and community inspiration, while dedicated UI kits such as Bridalova and wedding planner app case studies can accelerate concept exploration.</div></div>
+        <div class="grid cols-1 gap-md">
+          <div class="card pad-md reveal"><div class="card-title mb-4">Recommended stack</div><p class="small">Next.js for the web app, Supabase for auth, database, and storage, Stripe for payments, and Mapbox or Google Maps for location-based discovery.</p></div>
+          <div class="card pad-md reveal"><div class="card-title mb-4">Design workflow</div><p class="small">Brand direction → information architecture → wireframes → high-fidelity mockups → clickable prototype → production design system.</p></div>
+          <div class="card pad-md reveal"><div class="card-title mb-4">Go-to-market</div><p class="small">Start with a curated set of Australian venues and suppliers in one city, prove the planning loop, then expand region by region.</p></div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="slide" data-slide="11">
+  <!-- 11 · CLOSING -->
+  <section class="slide">
     <div class="gradient-mesh">
-      <div class="blob" style="width:520px;height:520px;top:-140px;right:-120px;background:#8f6a42;opacity:.22"></div>
-      <div class="blob" style="width:300px;height:300px;bottom:-70px;left:-40px;background:#d6b37a;opacity:.14"></div>
-      <div class="blob" style="width:220px;height:220px;top:38%;left:14%;background:#f3e3c4;opacity:.08"></div>
+      <div class="blob" style="width:520px;height:520px;top:-140px;right:-120px;background:#c98b8b;opacity:.18"></div>
+      <div class="blob" style="width:300px;height:300px;bottom:-70px;left:-40px;background:#b39680;opacity:.12"></div>
+      <div class="blob" style="width:220px;height:220px;top:38%;left:14%;background:#8a9a7b;opacity:.07"></div>
     </div>
-    <canvas class="particle-canvas" style="position:absolute;inset:0;z-index:1"></canvas>
     <div class="content text-center">
-      <div class="reveal mb-4 section-label">Closing vision</div>
-      <h2 class="reveal mx-auto mb-5 max-w-4xl font-display text-[clamp(2.6rem,5vw,4.6rem)] font-bold leading-[1.02]">A premium wedding platform couples would actually <span class="hero-word">love to use</span></h2>
-      <p class="reveal mx-auto max-w-3xl text-[1.1rem] leading-relaxed text-text-secondary">Vow should not feel like admin software. It should feel ceremonial, composed, and intelligent — a product that reduces chaos while elevating the emotional experience of planning.</p>
-      <div class="reveal mt-8 mx-auto max-w-4xl grid grid-cols-3 gap-5">
-        <div class="premium-card p-6"><div class="mb-2 font-semibold text-accent-1">Classy brand</div><div class="text-sm text-text-secondary">Warm neutrals, elegant serif display, polished motion.</div></div>
-        <div class="premium-card p-6"><div class="mb-2 font-semibold text-accent-1">Real utility</div><div class="text-sm text-text-secondary">Venue discovery to guest logistics in one operating layer.</div></div>
-        <div class="premium-card p-6"><div class="mb-2 font-semibold text-accent-1">Monetizable model</div><div class="text-sm text-text-secondary">Couple subscriptions, planner pro tier, and premium vendor listings.</div></div>
+      <div class="reveal eyebrow mb-4">Closing vision</div>
+      <h2 class="reveal display-xl mx-auto mb-5 maxw-4xl">A premium wedding platform couples would actually <span class="hero-word">love to use</span></h2>
+      <p class="reveal body-lg mx-auto maxw-3xl">Vow shouldn't feel like admin software. It should feel ceremonial, composed, and intelligent — a product that reduces chaos while lifting the emotional experience of planning.</p>
+      <div class="reveal grid cols-3 mx-auto mt-8" style="max-width:56rem;">
+        <div class="card pad-md"><div class="card-title mb-4">A classy brand</div><p class="small">Warm neutrals, an editorial serif, and polished, restrained motion.</p></div>
+        <div class="card pad-md"><div class="card-title mb-4">Real utility</div><p class="small">Venue discovery through to guest logistics in one operating layer.</p></div>
+        <div class="card pad-md"><div class="card-title mb-4">A model that pays</div><p class="small">Couple subscriptions, a planner pro tier, and premium supplier listings.</p></div>
+      </div>
+      <div class="reveal mt-8">
+        <a class="pill" style="background:var(--color-primary);color:#fff;border-color:var(--color-primary);padding:12px 22px;font-size:.95rem;font-weight:600;letter-spacing:.03em;" href="https://vow-app-two.vercel.app/" target="_blank" rel="noopener">Try the App →</a>
       </div>
     </div>
   </section>
-</div>
-<div class="nav-controls">
-  <button class="nav-btn" aria-label="Previous slide" onclick="changeSlide(-1)">&#8249;</button>
-  <div class="slide-dots" id="dots"></div>
-  <button class="nav-btn" aria-label="Next slide" onclick="changeSlide(1)">&#8250;</button>
-  <span class="slide-counter" id="counter">1 / 11</span>
-</div>
+
+</main>
+
 <script>
-(function(){
-  const root = document.documentElement;
-  const btn = document.getElementById('scrollTopBtn');
+(function () {
   const progress = document.getElementById('pageProgress');
-  let theme = 'dark';
-  btn && btn.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+  const topBtn = document.getElementById('scrollTopBtn');
+
+  topBtn && topBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  // Scroll progress bar
   const onScroll = () => {
     const h = document.documentElement.scrollHeight - window.innerHeight;
-    const p = h > 0 ? (window.scrollY / h) * 100 : 0;
-    progress.style.width = p + '%';
+    progress.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%';
   };
-  document.addEventListener('scroll', onScroll, {passive:true});
+  document.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.style.opacity = '1';
-        e.target.style.transform = 'translateY(0)';
-        io.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.12 });
-  document.querySelectorAll('.reveal').forEach(el => {
-    el.style.transition = 'opacity .6s ease, transform .65s ease';
-    io.observe(el);
-  });
-  document.querySelectorAll('.bar-fill').forEach((bar, i) => {
-    const w = bar.dataset.width || '0';
-    setTimeout(() => { bar.style.width = w + '%'; }, 250 + i * 120);
-  });
+
+  // Reveal-on-scroll
+  if ('IntersectionObserver' in window) {
+    document.documentElement.classList.add('js-reveal');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.style.opacity = '1';
+          e.target.style.transform = 'translateY(0)';
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+  }
+
+  // Animate marketplace bars when they enter view
+  if ('IntersectionObserver' in window) {
+    const barIO = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.style.width = (e.target.dataset.width || '0') + '%';
+          barIO.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.4 });
+    document.querySelectorAll('.bar-fill').forEach((bar) => barIO.observe(bar));
+  } else {
+    document.querySelectorAll('.bar-fill').forEach((bar) => { bar.style.width = (bar.dataset.width || '0') + '%'; });
+  }
+
+  // Cursor spotlight
   const spotlight = document.querySelector('.spot');
-  document.addEventListener('mousemove', (e) => {
-    if (!spotlight) return;
-    spotlight.style.background = `radial-gradient(560px circle at ${e.clientX}px ${e.clientY}px, rgba(214,179,122,0.08), transparent 40%)`;
-  });
+  if (spotlight && window.matchMedia('(pointer:fine)').matches) {
+    document.addEventListener('mousemove', (e) => {
+      spotlight.style.background = `radial-gradient(560px circle at ${e.clientX}px ${e.clientY}px, rgba(201,139,139,0.06), transparent 40%)`;
+    });
+  }
 })();
 </script>
-<style>
-/* =====================================================
-   MOBILE OVERRIDES — placed last in the document so
-   these rules take effect after Tailwind's injected CSS
-   ===================================================== */
-
-/* Prevent text from wrapping inside pill badges */
-.mini-pill { white-space: nowrap; }
-
-@media (max-width: 900px) {
-  /* Collapse all standard Tailwind column grids to single column */
-  .grid-cols-2,
-  .grid-cols-3,
-  .grid-cols-5 {
-    grid-template-columns: 1fr !important;
-  }
-
-  /* Collapse arbitrary-value grids (grid-cols-[…]) */
-  [class*="grid-cols-["] {
-    grid-template-columns: 1fr !important;
-  }
-
-  /* 4-column icon rows → 2 × 2 */
-  .grid-cols-4 {
-    grid-template-columns: repeat(2, 1fr) !important;
-  }
-
-  /* User journey: readable stacked steps */
-  .grid-cols-5 {
-    grid-template-columns: 1fr !important;
-    gap: 12px !important;
-  }
-
-  /* Make every inner nested grid collapse too */
-  .premium-card .grid,
-  .mock-frame .grid {
-    grid-template-columns: 1fr !important;
-  }
-}
-
-@media (max-width: 560px) {
-  /* On very small phones, 2×2 icon grid → full single column */
-  .grid-cols-4 {
-    grid-template-columns: 1fr !important;
-  }
-}
-</style>
 </body>
 </html>
